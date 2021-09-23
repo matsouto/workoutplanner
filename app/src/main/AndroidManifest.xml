@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WorkoutApp">
         <activity
+            android:name=".exercises.Chest"
+            android:exported="true" />
+        <activity
+            android:name=".exercises.Legs"
+            android:exported="true" />
+        <activity
+            android:name=".exercises.Lats"
+            android:exported="true" />
+        <activity
             android:name=".WorkoutTimer"
             android:exported="true" />
         <activity

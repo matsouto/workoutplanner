@@ -5,6 +5,9 @@
       <map>
         <entry key="..\:/Users/Matheus/AndroidStudioProjects/WorkoutApp/app/src/main/res/drawable/menu_bg.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/Matheus/AndroidStudioProjects/WorkoutApp/app/src/main/res/drawable/menubg.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/Matheus/AndroidStudioProjects/WorkoutApp/app/src/main/res/layout/activity_chest.xml" value="0.209375" />
+        <entry key="..\:/Users/Matheus/AndroidStudioProjects/WorkoutApp/app/src/main/res/layout/activity_lats_biceps.xml" value="0.209375" />
+        <entry key="..\:/Users/Matheus/AndroidStudioProjects/WorkoutApp/app/src/main/res/layout/activity_legs_abs.xml" value="0.209375" />
         <entry key="..\:/Users/Matheus/AndroidStudioProjects/WorkoutApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/Matheus/AndroidStudioProjects/WorkoutApp/app/src/main/res/layout/activity_workout_planner.xml" value="0.25" />
         <entry key="..\:/Users/Matheus/AndroidStudioProjects/WorkoutApp/app/src/main/res/layout/activity_workoutplanner.xml" value="0.209375" />
