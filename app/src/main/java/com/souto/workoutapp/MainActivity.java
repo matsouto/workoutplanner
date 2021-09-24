@@ -8,11 +8,18 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.Objects;
 
 // MENU
 
 public class MainActivity extends AppCompatActivity {
+
+    // Identifies if there is already a authentication session running
+
+    private FirebaseAuth mAuth;
 
     protected Button btn_planner;
 
@@ -38,8 +45,25 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Get the logged user, if it exists
+        FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
+
+        // If not, go to login screen
+        if(current_user == null) {
+            Intent intent_login = new Intent(this, Login.class);
+            startActivity(intent_login);
+            // finishes the activity to not occupy memory
+            finish();
+        }
+    }
+
     private void startPlanner() {
         Intent intent_planner = new Intent(this, WorkoutPlanner.class);
         startActivity(intent_planner);
+        finish();
     }
 }

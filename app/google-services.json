@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "717410655457",
+    "firebase_url": "https://fbpractice-84948-default-rtdb.firebaseio.com",
+    "project_id": "fbpractice-84948",
+    "storage_bucket": "fbpractice-84948.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:717410655457:android:89f259dfa17b98fac86ba0",
+        "android_client_info": {
+          "package_name": "com.souto.workoutapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "717410655457-mptrq5ellmbmcnh8agpv6112tcets7k3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDz3bmt4uJYOJ8zCz4jYtm96VhJ7Cqwl-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "717410655457-mptrq5ellmbmcnh8agpv6112tcets7k3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
