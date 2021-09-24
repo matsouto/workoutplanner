@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 
 import com.souto.workoutapp.R;
 
@@ -21,9 +20,10 @@ public class Lats extends AppCompatActivity {
 
         getSupportActionBar().setTitle("A - D A Y");
 
-        setContentView(R.layout.activity_lats_biceps);
+        setContentView(R.layout.activity_lats);
 
         //-----------------------------------------------------
+
 
 
 
