@@ -14,14 +14,64 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
         android:fontFamily="@font/roboto_light"
-        android:text="Select Your Training"
+        android:text="@string/lats_Title"
         android:textColor="@color/white"
-        android:textSize="30dp" />
+        android:textSize="38sp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/lats_list"
+    <TableLayout
+        android:id="@+id/training_table"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/select_training" />
+        android:layout_below="@+id/select_training"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:stretchColumns="1,2,3">
 
+        <TableRow>
+
+            <TextView
+                android:layout_column="1"
+                android:fontFamily="@font/roboto_light"
+                android:gravity="center"
+                android:text="@string/check"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_column="2"
+                android:fontFamily="@font/roboto_light"
+                android:gravity="center"
+                android:text="@string/exercise"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_column="3"
+                android:fontFamily="@font/roboto_light"
+                android:gravity="center"
+                android:text="@string/load"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <View
+            android:id="@+id/div_line"
+            android:layout_height="5dp"
+            android:background="@color/app_orange" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </TableLayout>
 </RelativeLayout>
