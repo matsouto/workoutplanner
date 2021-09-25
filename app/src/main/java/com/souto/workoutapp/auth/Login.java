@@ -1,4 +1,4 @@
-package com.souto.workoutapp;
+package com.souto.workoutapp.auth;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,11 +11,12 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.souto.workoutapp.MainActivity;
+import com.souto.workoutapp.R;
 
 import java.util.Objects;
 
@@ -68,12 +69,21 @@ public class Login extends AppCompatActivity {
                 edt_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
             }
         });
+
+        btn_register.setOnClickListener(view -> {
+            openRegister();
+        });
     }
 
 
     private void openMainScreen() {
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    private void openRegister() {
+        Intent intent = new Intent(this, Register.class);
+        startActivity(intent);
     }
 }

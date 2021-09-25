@@ -10,6 +10,8 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.souto.workoutapp.auth.Login;
+import com.souto.workoutapp.auth.Register;
 
 import java.util.Objects;
 
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         //----------------------------------------------
 
         // Setting the callback for the planner button
-        btn_planner = (Button) findViewById(R.id.btn_planner);
+        btn_planner = findViewById(R.id.btn_planner);
         btn_planner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
