@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         txt_hello = findViewById(R.id.txt_hello);
 
+        /* NAO TA FUNCIONANDO N SEI PQ
         FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
         DatabaseReference mRef = mDatabase.getReference().child("users").child(mAuth.getUid());
 
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        */
 
         btn_logout = findViewById(R.id.btn_logout);
         btn_logout.setOnClickListener(new View.OnClickListener() {
