@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
-    protected Button btn_planner;
+    public Button btn_planner;
+    public Button btn_logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,16 @@ public class MainActivity extends AppCompatActivity {
         //----------------------------------------------
 
         // Setting the callback for the planner button
+        mAuth = FirebaseAuth.getInstance();
+        btn_logout = findViewById(R.id.btn_logout);
+        btn_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAuth.signOut();
+                openLogin();
+            }
+        });
+
         btn_planner = findViewById(R.id.btn_planner);
         btn_planner.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +72,12 @@ public class MainActivity extends AppCompatActivity {
             // finishes the activity to not occupy memory
             finish();
         }
+    }
+
+    public void openLogin(){
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
+        finish();
     }
 
     private void startPlanner() {

@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.souto.workoutapp.R;
+import com.souto.workoutapp.model.UserModel;
 
 import java.util.Objects;
 
@@ -23,11 +24,12 @@ public class Register extends AppCompatActivity {
 
     public Button btn_register;
     public Button btn_login;
-    private EditText edt_name;
     private EditText edt_email;
     private EditText edt_password;
     public CheckBox ckb_show;
     private FirebaseAuth mAuth;
+    private EditText edt_name;
+    private EditText edt_surname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +41,12 @@ public class Register extends AppCompatActivity {
 
         btn_register = findViewById(R.id.register_btn);
         btn_login = findViewById(R.id.register_login);
-        edt_name = findViewById(R.id.register_name);
         edt_email = findViewById(R.id.register_email);
         edt_password = findViewById(R.id.register_password);
         ckb_show = findViewById(R.id.register_show);
         mAuth = FirebaseAuth.getInstance();
+        edt_name = findViewById(R.id.register_name);
+        edt_surname = findViewById(R.id.register_surname);
 
         btn_login.setOnClickListener(view -> openLogin());
 
@@ -56,14 +59,26 @@ public class Register extends AppCompatActivity {
         });
 
         btn_register.setOnClickListener(view -> {
-            String name = edt_name.getText().toString();
-            String email = edt_email.getText().toString();
+
+            // Creates an instance of the userModel object with the empty constructor
+            UserModel userModel = new UserModel();
+
+            // Assigning the input values to the userModel
+            userModel.setId(mAuth.getUid());
+            userModel.setName(edt_name.getText().toString());
+            userModel.setSurname(edt_surname.getText().toString());
+            userModel.setEmail(edt_email.getText().toString());
+
             String password = edt_password.getText().toString();
 
             // If email or password boxes are not empty
-            if (!TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(task -> {
+            if (!TextUtils.isEmpty(userModel.getName()) ||
+                    !TextUtils.isEmpty(userModel.getSurname()) ||
+                    !TextUtils.isEmpty(userModel.getEmail()) ||
+                    !TextUtils.isEmpty(password)) {
+                mAuth.createUserWithEmailAndPassword(userModel.getEmail(),password).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
+                        userModel.firebaseSave();
                         Toast.makeText(Register.this,"Registration Successful",Toast.LENGTH_SHORT).show();
                         openLogin();
                     }else{

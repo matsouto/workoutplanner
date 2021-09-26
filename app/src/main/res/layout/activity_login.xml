@@ -23,28 +23,46 @@
         android:layout_marginBottom="130dp"
         />
 
-    <EditText
-        android:id="@+id/login_email"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:hint="@string/e_mail"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
         android:backgroundTint="@color/white"
-        />
+        android:textColorHint="@color/white"
+        app:startIconDrawable="@drawable/ic_email"
+        app:boxStrokeColor="@color/app_orange"
+        app:endIconMode="clear_text"
+        android:hint="@string/e_mail">
 
-    <EditText
-        android:id="@+id/login_password"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="@string/password"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
         android:backgroundTint="@color/white"
-        android:layout_marginTop="10dp"
-        />
+        android:textColorHint="@color/white"
+        app:startIconDrawable="@drawable/ic_password"
+        app:boxStrokeColor="@color/app_orange"
+        app:endIconMode="clear_text"
+        android:hint="@string/password">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <CheckBox
         android:id="@+id/login_show"
         android:layout_width="match_parent"
@@ -54,14 +72,14 @@
         android:textColorHint="@color/white"
         android:backgroundTint="@color/white"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/login_btn"
-        android:text="@string/login"
+        android:text="log in"
         android:textColor="@color/white"
         android:backgroundTint="@color/app_gray"
         android:layout_marginTop="15dp"
