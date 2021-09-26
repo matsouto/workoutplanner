@@ -54,9 +54,12 @@ public class UserModel {
     }
 
     public void firebaseSave() {
-        // Gets the reference for the RTDB path
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-        reference.child("users").child(getId()).setValue(this);
+
+        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference mRef = mDatabase.getReference();
+
+        mRef.child("users").child(getId()).setValue(this);
+
     }
 }
 

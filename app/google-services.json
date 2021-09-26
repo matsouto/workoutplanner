@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "1387872744",
-    "project_id": "workoutapp-aa181",
-    "storage_bucket": "workoutapp-aa181.appspot.com"
+    "project_number": "760174265883",
+    "project_id": "workoutapp-a5355",
+    "storage_bucket": "workoutapp-a5355.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1387872744:android:11abeced00ddb2bc0ba45d",
+        "mobilesdk_app_id": "1:760174265883:android:e4a852b87c93004ad5dabe",
         "android_client_info": {
           "package_name": "com.souto.workoutapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1387872744-7ug0u2pfcs4tii5uf8127na3i307aibd.apps.googleusercontent.com",
+          "client_id": "760174265883-tq3uqdnshhckf3un87cche563qjomokk.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDn381LKfIjhnDi6JEP4m7AhIQr1XooBjg"
+          "current_key": "AIzaSyCCuj0DZwGpz3FTNKyRHKULlLtl_WmA4Oc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1387872744-7ug0u2pfcs4tii5uf8127na3i307aibd.apps.googleusercontent.com",
+              "client_id": "760174265883-tq3uqdnshhckf3un87cche563qjomokk.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

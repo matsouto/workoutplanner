@@ -64,7 +64,6 @@ public class Register extends AppCompatActivity {
             UserModel userModel = new UserModel();
 
             // Assigning the input values to the userModel
-            userModel.setId(mAuth.getUid());
             userModel.setName(edt_name.getText().toString());
             userModel.setSurname(edt_surname.getText().toString());
             userModel.setEmail(edt_email.getText().toString());
@@ -78,6 +77,7 @@ public class Register extends AppCompatActivity {
                     !TextUtils.isEmpty(password)) {
                 mAuth.createUserWithEmailAndPassword(userModel.getEmail(),password).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
+                        userModel.setId(mAuth.getUid());
                         userModel.firebaseSave();
                         Toast.makeText(Register.this,"Registration Successful",Toast.LENGTH_SHORT).show();
                         openLogin();
