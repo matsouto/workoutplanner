@@ -82,7 +82,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
-        android:id="@+id/login_show"
+        android:id="@+id/register_show"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/show_password"
@@ -90,13 +90,13 @@
         android:textColorHint="@color/white"
         android:backgroundTint="@color/white"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         />
 
     <Button
+        android:id="@+id/register_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/login_register"
         android:text="@string/register"
         android:textColor="@color/white"
         android:backgroundTint="@color/app_orange"
@@ -104,9 +104,9 @@
         />
 
     <Button
+        android:id="@+id/register_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/register_btn"
         android:text="@string/login"
         android:textColor="@color/white"
         android:backgroundTint="@color/app_gray"

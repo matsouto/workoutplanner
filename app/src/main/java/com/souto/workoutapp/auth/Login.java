@@ -49,6 +49,7 @@ public class Login extends AppCompatActivity {
             String getEmail = edt_email.getText().toString();
             String getPassword = edt_password.getText().toString();
 
+            // If email or password boxes are not empty
             if(!TextUtils.isEmpty(getEmail) || !TextUtils.isEmpty(getPassword)) {
                 mAuth.signInWithEmailAndPassword(getEmail,getPassword)
                         .addOnCompleteListener(task -> {
@@ -85,5 +86,6 @@ public class Login extends AppCompatActivity {
     private void openRegister() {
         Intent intent = new Intent(this, Register.class);
         startActivity(intent);
+        finish();
     }
 }
