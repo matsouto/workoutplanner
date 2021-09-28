@@ -18,4 +18,5 @@
     <string name="planner">Workout Planner</string>
     <string name="timer">Timer</string>
     <string name="log_out">Log out</string>
+    <string name="add">Add</string>
 </resources>
