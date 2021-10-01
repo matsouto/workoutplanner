@@ -45,6 +45,7 @@ public class Login extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         ckb_show = findViewById(R.id.login_show);
 
+        // Login button
         btn_login.setOnClickListener(view -> {
             String getEmail = edt_email.getText().toString();
             String getPassword = edt_password.getText().toString();
@@ -63,6 +64,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        // Show password button
         ckb_show.setOnCheckedChangeListener((compoundButton, b) -> {
             if(compoundButton.isChecked()) {
                 edt_password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());

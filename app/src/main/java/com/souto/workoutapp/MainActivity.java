@@ -53,12 +53,12 @@ public class MainActivity extends AppCompatActivity {
 
         // AS VEZES FUNCIONA AS VEZES NAO (?)
         FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference mRef = mDatabase.getReference().child("users").child(mAuth.getUid());
+        DatabaseReference mRef = mDatabase.getReference().child("users").child(Objects.requireNonNull(mAuth.getUid()));
 
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String helloName = "Hello, " + snapshot.child("name").getValue().toString();
+                String helloName = "Hello, " + Objects.requireNonNull(snapshot.child("name").getValue()).toString();
                 txt_hello.setText(helloName);
             }
 
