@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".exercises.ExerciseCreatorLats"
+    android:background="@drawable/menu_bg"
+    android:orientation="vertical"
+    android:padding="25dp">
+
+
+    <TextView
+        android:id="@+id/create_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/create_your_exercise"
+        android:textColor="@color/white"
+        android:textSize="38sp"
+        android:fontFamily="@font/roboto_light"
+        android:textAlignment="center"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="100dp"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/app_orange"
+        app:endIconMode="clear_text"
+        android:hint="@string/exercise"
+        android:layout_marginBottom="20dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/create_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/app_orange"
+        app:endIconMode="clear_text"
+        android:hint="@string/series"
+        android:layout_marginBottom="20dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/create_series"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/app_orange"
+        app:endIconMode="clear_text"
+        android:hint="@string/load"
+        android:layout_marginBottom="20dp"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/create_load"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_create"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/create"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/app_orange"
+        android:layout_marginTop="15dp"
+        />
+
+    <Button
+        android:id="@+id/btn_return"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/_return"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/app_gray"
+        android:layout_marginTop="15dp"
+        />
+</LinearLayout>

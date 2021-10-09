@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="5">
+
+    <TextView
+        android:id="@+id/exercise_series"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:text="@string/series"
+        android:textAlignment="center"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/exercise_name"
+        android:layout_weight="3"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:text="@string/exercise"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/exercise_load"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:text="@string/load"
+        android:textAlignment="center"
+        android:gravity="center"
+        />
+</LinearLayout>

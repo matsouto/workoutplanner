@@ -20,4 +20,7 @@
     <string name="log_out">Log out</string>
     <string name="add">Add</string>
     <string name="series">Series</string>
+    <string name="create_your_exercise">Create Your Exercise</string>
+    <string name="create">Create</string>
+    <string name="_return">Return</string>
 </resources>

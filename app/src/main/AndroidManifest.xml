@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WorkoutApp">
         <activity
+            android:name=".exercises.ExerciseCreatorLats"
+            android:exported="true" />
+        <activity
             android:name=".auth.Register"
             android:exported="true" />
         <activity

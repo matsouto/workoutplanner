@@ -52,9 +52,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         // AS VEZES FUNCIONA AS VEZES NAO (?)
-        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+        /* FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
         DatabaseReference mRef = mDatabase.getReference().child("users").child(Objects.requireNonNull(mAuth.getUid()));
 
+        // Adicionar o if not null....
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -66,8 +67,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
-
+        }); */
 
         btn_logout = findViewById(R.id.btn_logout);
         btn_logout.setOnClickListener(new View.OnClickListener() {
@@ -109,9 +109,9 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
+    // Removed the finish() and worked
     private void startPlanner() {
-        Intent intent_planner = new Intent(this, WorkoutPlanner.class);
-        startActivity(intent_planner);
-        finish();
+        Intent intent = new Intent(this, WorkoutPlanner.class);
+        startActivity(intent);
     }
 }

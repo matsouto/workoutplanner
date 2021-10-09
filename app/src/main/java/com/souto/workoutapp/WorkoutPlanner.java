@@ -10,6 +10,8 @@ import android.widget.Button;
 
 import com.souto.workoutapp.exercises.Lats;
 
+import java.util.Objects;
+
 public class WorkoutPlanner extends AppCompatActivity {
 
     protected Button btn_lats;
@@ -21,7 +23,7 @@ public class WorkoutPlanner extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION); // Hide Navigation
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN); // Hide Status
 
-        getSupportActionBar().setTitle("P L A N N E R");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("P L A N N E R");
 
         setContentView(R.layout.activity_workout_planner);
 
@@ -34,6 +36,13 @@ public class WorkoutPlanner extends AppCompatActivity {
                 startLats();
             }
         });
+    }
+
+    // On back pressed it finishes the activity to save RAM.
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 
     public void startLats() {

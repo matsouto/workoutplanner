@@ -27,45 +27,43 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
-        android:stretchColumns="1,2,3,4">
+        android:stretchColumns="1,2,3"
+        android:weightSum="5">
 
         <TableRow>
 
             <TextView
                 android:layout_column="1"
                 android:fontFamily="@font/roboto_light"
-                android:gravity="center"
-                android:text="@string/check"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="25sp" />
-
-            <TextView
-                android:layout_column="2"
-                android:fontFamily="@font/roboto_light"
+                android:layout_width="0dp"
                 android:gravity="center"
                 android:text="@string/series"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="25sp" />
+                android:textSize="25sp"
+                android:layout_weight="1"/>
 
             <TextView
-                android:layout_column="3"
+                android:layout_column="2"
                 android:fontFamily="@font/roboto_light"
+                android:layout_width="0dp"
                 android:gravity="center"
                 android:text="@string/exercise"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="25sp" />
+                android:textSize="25sp"
+                android:layout_weight="3"/>
 
             <TextView
-                android:layout_column="4"
+                android:layout_column="3"
                 android:fontFamily="@font/roboto_light"
+                android:layout_width="0dp"
                 android:gravity="center"
                 android:text="@string/load"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="25sp" />
+                android:textSize="25sp"
+                android:layout_weight="1"/>
         </TableRow>
 
         <View
@@ -81,12 +79,12 @@
     </TableLayout>
 
     <Button
+        android:id="@+id/btn_add"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/training_table"
         android:layout_centerHorizontal="true"
-        android:backgroundTint="@color/app_orange"
-        android:text="@string/add"
         android:layout_marginTop="15dp"
-        />
+        android:backgroundTint="@color/app_orange"
+        android:text="@string/add" />
 </RelativeLayout>
