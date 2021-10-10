@@ -50,12 +50,22 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         txt_hello = findViewById(R.id.txt_hello);
 
+        // Get the logged user, if it exists
+        FirebaseUser current_user = mAuth.getCurrentUser();
 
-        // AS VEZES FUNCIONA AS VEZES NAO (?)
-        /* FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+        // If not, go to login screen
+        if(current_user == null) {
+            Intent intent_login = new Intent(this, Login.class);
+            startActivity(intent_login);
+            // finishes the activity to not occupy memory
+            finish();
+        }
+
+        // Gets the firebase
+        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
         DatabaseReference mRef = mDatabase.getReference().child("users").child(Objects.requireNonNull(mAuth.getUid()));
 
-        // Adicionar o if not null....
+        // Shows the "hello, ..." message.
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -67,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        }); */
+        });
 
         btn_logout = findViewById(R.id.btn_logout);
         btn_logout.setOnClickListener(new View.OnClickListener() {
@@ -85,22 +95,6 @@ public class MainActivity extends AppCompatActivity {
                 startPlanner();
             }
         });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        // Get the logged user, if it exists
-        FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
-
-        // If not, go to login screen
-        if(current_user == null) {
-            Intent intent_login = new Intent(this, Login.class);
-            startActivity(intent_login);
-            // finishes the activity to not occupy memory
-            finish();
-        }
     }
 
     public void openLogin(){

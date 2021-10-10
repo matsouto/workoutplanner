@@ -94,9 +94,9 @@ public class ExerciseCreatorLats extends AppCompatActivity {
             DatabaseReference mRef = mDatabase.getReference();
 
             mRef.child("users").child(mAuth.getUid()).child("latsList").child(exercise.getExercise_name()).setValue(exercise);
-            Toast.makeText(ExerciseCreatorLats.this,"Saved Successfully!",Toast.LENGTH_SHORT).show();
+            // Toast.makeText(ExerciseCreatorLats.this,"Saved Successfully!",Toast.LENGTH_SHORT).show();
         }
-
         openLats();
+        finish();
     }
 }
