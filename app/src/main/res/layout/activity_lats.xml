@@ -7,24 +7,12 @@
     tools:context=".exercises.Lats"
     android:background="@drawable/menu_bg">
 
-    <TextView
-        android:id="@+id/select_training"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:fontFamily="@font/roboto_light"
-        android:text="@string/lats_Title"
-        android:textColor="@color/white"
-        android:textSize="38sp" />
-
     <TableLayout
         android:id="@+id/training_table"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/select_training"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
         android:stretchColumns="1,2,3"
@@ -74,7 +62,7 @@
         <ListView
             android:id="@+id/lats_exercise_list"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="450dp"
             android:layout_marginTop="15dp" />
     </TableLayout>
 
@@ -84,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/training_table"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="40dp"
         android:backgroundTint="@color/app_orange"
         android:text="@string/add" />
 </RelativeLayout>

@@ -4,12 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +26,8 @@ import com.souto.workoutapp.auth.Register;
 import com.souto.workoutapp.model.CustomAdapter;
 import com.souto.workoutapp.model.ExerciseModel;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -33,6 +38,7 @@ public class Lats extends AppCompatActivity {
     public Button btn_add;
     public ArrayList<ExerciseModel> exercises = new ArrayList<>();
     public ListView listView;
+    public TextView exercise_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +47,7 @@ public class Lats extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION); // Hide Navigation
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); // Hide Status
 
-        getSupportActionBar().setTitle("A - D A Y");
+        getSupportActionBar().setTitle("L A T S  &  B I C E P S");
 
         setContentView(R.layout.activity_lats);
 
@@ -56,18 +62,20 @@ public class Lats extends AppCompatActivity {
             }
         });
 
+        exercise_name = findViewById(R.id.exercise_name);
+
         listView = findViewById(R.id.lats_exercise_list);
         mAuth = FirebaseAuth.getInstance();
 
         // Reads the data from the database to create the ListView
         FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
         DatabaseReference mRef = mDatabase.getReference().child("users").child(mAuth.getUid()).child("latsList");
+        Toast.makeText(Lats.this,"Loading Your Exercises!",Toast.LENGTH_SHORT).show();
 
         // Sets the listener to load the database exercise list
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Toast.makeText(Lats.this,"Loading Your Exercises!",Toast.LENGTH_SHORT).show();
                 // Iterates for each item in the mRef database path
                 for (DataSnapshot item_snapshot : snapshot.getChildren()) {
                     // Gets data from firebase and associates it to the exercise object
@@ -75,14 +83,33 @@ public class Lats extends AppCompatActivity {
                     // Add the exercise to the exercises arraylist
                     exercises.add(exercise);
                 }
+
                 // Sets the adapter and creates the listview
                 CustomAdapter mCustomAdapter = new CustomAdapter(Lats.this,exercises);
                 listView.setAdapter(mCustomAdapter);
 
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // Gets the clicked view, gets the specific exercise_name view, casts into textview
+                        TextView text = (TextView)view.findViewById(R.id.exercise_name);
+
+                        // Strikethrough the selected item
+                        // text.setPaintFlags(text.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
+                        // Shows message of which exercise you have completed
+                        String exercise_to_delete = text.getText().toString();
+                        Toast.makeText(Lats.this, exercise_to_delete + " done!", Toast.LENGTH_SHORT).show();
+
+                        // Removes the clicked item and than updates the adapter
+                        exercises.remove(position);
+                        mCustomAdapter.notifyDataSetChanged();
+
+                    }
+                });
+
                 if (exercises.isEmpty()){
                     Toast.makeText(Lats.this,"You Don't Have Exercises!",Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(Lats.this,"Exercises Loaded!",Toast.LENGTH_SHORT).show();
                 }
             }
 
