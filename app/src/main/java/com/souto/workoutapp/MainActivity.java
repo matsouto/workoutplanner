@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageReference;
 import com.souto.workoutapp.auth.Login;
 import com.souto.workoutapp.auth.Register;
 
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
-    public Button btn_planner;
+    public Button btn_planner, btn_evolution;
     public Button btn_logout;
     public TextView txt_hello;
 
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Setting the callback for the planner button
         mAuth = FirebaseAuth.getInstance();
+
         txt_hello = findViewById(R.id.txt_hello);
 
         // Get the logged user, if it exists
@@ -95,6 +98,14 @@ public class MainActivity extends AppCompatActivity {
                 startPlanner();
             }
         });
+
+        btn_evolution = findViewById(R.id.btn_evolution);
+        btn_evolution.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startEvolution();
+            }
+        });
     }
 
     public void openLogin(){
@@ -104,8 +115,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Removed the finish() and worked
-    private void startPlanner() {
+    public void startPlanner() {
         Intent intent = new Intent(this, WorkoutPlanner.class);
+        startActivity(intent);
+    }
+
+    public void startEvolution() {
+        Intent intent = new Intent(this, MyEvolution.class);
         startActivity(intent);
     }
 }

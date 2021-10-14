@@ -23,4 +23,10 @@
     <string name="create_your_exercise">Create Your Exercise</string>
     <string name="create">Create</string>
     <string name="_return">Return</string>
+    <string name="my_evolution">My Evolution</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="log_in">log in</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
 </resources>

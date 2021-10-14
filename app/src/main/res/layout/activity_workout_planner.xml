@@ -9,7 +9,7 @@
     android:padding="20dp">
 
     <TextView
-        android:id="@+id/select_text"
+        android:id="@+id/evolution_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -23,7 +23,7 @@
         android:id="@+id/btn_A"
         android:layout_width="200dp"
         android:layout_height="60dp"
-        android:layout_below="@+id/select_text"
+        android:layout_below="@+id/evolution_text"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
         android:layout_marginBottom="25dp"

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".exercises.Lats"
-    android:background="@drawable/menu_bg">
+    android:background="@drawable/menu_bg"
+    android:padding="20dp">
 
     <TableLayout
         android:id="@+id/training_table"
@@ -72,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/training_table"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="@color/app_orange"
         android:text="@string/add" />
 </RelativeLayout>
