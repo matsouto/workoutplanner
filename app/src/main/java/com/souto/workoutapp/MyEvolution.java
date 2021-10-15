@@ -1,5 +1,6 @@
 package com.souto.workoutapp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -9,27 +10,31 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Picasso;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 public class MyEvolution extends AppCompatActivity {
@@ -38,6 +43,7 @@ public class MyEvolution extends AppCompatActivity {
 
     public Button btn_camera, btn_gallery;
     public ImageView img_test;
+    public ProgressBar progressBar;
 
     // Photo taken by the user is stored in this variable
     private File photoFile;
@@ -57,14 +63,6 @@ public class MyEvolution extends AppCompatActivity {
 
         setContentView(R.layout.activity_my_evolution);
         //-----------------------------------------------------
-
-        // Gets firebase authentication
-        mAuth = FirebaseAuth.getInstance();
-
-        // Gets firebase storage reference
-        FirebaseStorage mStorage = FirebaseStorage.getInstance();
-        StorageReference mRef = mStorage.getReference().child("users").child(mAuth.getUid());
-
 
         // If the user haven't allowed the camera permission yet, request it
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
@@ -92,6 +90,8 @@ public class MyEvolution extends AppCompatActivity {
                 openFileChooser();
             }
         });
+
+        progressBar = findViewById(R.id.progress_bar);
     }
 
     void takePicture() throws IOException {
@@ -109,7 +109,6 @@ public class MyEvolution extends AppCompatActivity {
         }else{
             Toast.makeText(this,"Unable to open camera!",Toast.LENGTH_SHORT).show();
         }
-
     }
 
     private File getPhotoFile(String fileName) throws IOException {
@@ -130,17 +129,66 @@ public class MyEvolution extends AppCompatActivity {
 
         // To take a photo
         if(requestCode==CAPTURE_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
-//            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-//            img_test.setImageBitmap(bitmap);
-
-//            Bitmap takenImage = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
             Glide.with(this).load(photoFile).into(img_test);
+            Uri fileProvider = FileProvider.getUriForFile(this, "com.souto.fileprovider", photoFile);
+            uploadImageFirebase(fileProvider);
         }
 
         // To select a photo from gallery
         if(requestCode==PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
             Uri mImageUri = (Uri) data.getData();
             Glide.with(this).load(mImageUri).into(img_test);
+            uploadImageFirebase(mImageUri);
         }
+    }
+
+    // Gets image Uri and sends it to FBStorage
+    private void uploadImageFirebase(Uri imageUri) {
+
+        Uri mImageUri = imageUri;
+        // Gets firebase authentication
+        mAuth = FirebaseAuth.getInstance();
+
+        // Gets the current time to name the photos in storage
+        Date currentTime = Calendar.getInstance().getTime();
+
+        // Gets firebase storage reference
+        FirebaseStorage mStorage = FirebaseStorage.getInstance();
+        StorageReference mRef = mStorage.getReference().child("users").child(mAuth.getUid()).child(""+currentTime);
+
+        progressBar.setVisibility(View.VISIBLE);
+
+        // Uploads file to storage
+        mRef.putFile(mImageUri)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    // Delays the progress bar reset so the user can see it on 100%
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+//                                progressBar.setProgress(0);
+                                progressBar.setVisibility(View.INVISIBLE);
+                            }
+                        },1000);
+
+                        Toast.makeText(MyEvolution.this,"Uploaded successfully to database!",Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MyEvolution.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                        // Gives the progress percentage of the bytes transferred and makes it visible
+                        double progress = (100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
+                        progressBar.setProgress((int) progress);
+                    }
+                });
     }
 }
