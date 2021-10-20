@@ -88,6 +88,7 @@ public class Lats extends AppCompatActivity {
                 CustomAdapter mCustomAdapter = new CustomAdapter(Lats.this,exercises);
                 listView.setAdapter(mCustomAdapter);
 
+                // Excludes the items when clicked
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

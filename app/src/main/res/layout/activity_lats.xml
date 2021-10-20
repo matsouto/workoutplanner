@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".exercises.Lats"
     android:background="@drawable/menu_bg"
-    android:padding="20dp">
+    android:padding="20dp"
+    tools:context=".exercises.Lats">
 
     <TableLayout
         android:id="@+id/training_table"
@@ -17,42 +17,42 @@
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
         android:stretchColumns="1,2,3"
-        android:weightSum="5">
+        android:weightSum="7">
 
         <TableRow>
 
             <TextView
-                android:layout_column="1"
-                android:fontFamily="@font/roboto_light"
                 android:layout_width="0dp"
+                android:layout_column="1"
+                android:layout_weight="2"
+                android:fontFamily="@font/roboto_light"
                 android:gravity="center"
                 android:text="@string/series"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="25sp"
-                android:layout_weight="1"/>
+                android:textSize="25sp" />
 
             <TextView
-                android:layout_column="2"
-                android:fontFamily="@font/roboto_light"
                 android:layout_width="0dp"
+                android:layout_column="2"
+                android:layout_weight="3"
+                android:fontFamily="@font/roboto_light"
                 android:gravity="center"
                 android:text="@string/exercise"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="25sp"
-                android:layout_weight="3"/>
+                android:textSize="25sp" />
 
             <TextView
-                android:layout_column="3"
-                android:fontFamily="@font/roboto_light"
                 android:layout_width="0dp"
+                android:layout_column="3"
+                android:layout_weight="2"
+                android:fontFamily="@font/roboto_light"
                 android:gravity="center"
                 android:text="@string/load"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="25sp"
-                android:layout_weight="1"/>
+                android:textSize="25sp" />
         </TableRow>
 
         <View

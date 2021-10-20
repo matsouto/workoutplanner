@@ -29,4 +29,5 @@
     <string name="log_in">log in</string>
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
+    <string name="date">Date</string>
 </resources>
