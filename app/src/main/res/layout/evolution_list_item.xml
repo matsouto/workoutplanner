@@ -15,11 +15,11 @@
         android:gravity="center"
         android:text="@string/date"
         android:textColor="@color/app_orange"
-        android:textSize="20sp" />
+        android:textSize="15sp" />
 
     <ImageView
         android:id="@+id/img_photo"
         android:layout_width="match_parent"
-        android:layout_height="250dp" />
+        android:layout_height="400dp" />
 
 </LinearLayout>

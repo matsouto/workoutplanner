@@ -1,9 +1,12 @@
 package com.souto.workoutapp.model;
 
+import com.google.firebase.database.Exclude;
+
 public class ImageModel {
 
     private String ImageDate;
     private String ImageUri;
+    private String mKey;
 
     public ImageModel() {
     }
@@ -27,5 +30,16 @@ public class ImageModel {
 
     public void setImageUri(String imageUri) {
         ImageUri = imageUri;
+    }
+
+    // Excludes the key from the database
+    @Exclude
+    public String getKey() {
+        return mKey;
+    }
+
+    @Exclude
+    public void setKey(String mKey) {
+        this.mKey = mKey;
     }
 }

@@ -11,8 +11,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.souto.workoutapp.R;
+import com.squareup.picasso.Picasso;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
@@ -36,7 +47,35 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         ImageModel currentImage = imageList.get(position);
         holder.textDateView.setText(currentImage.getImageDate());
-        Glide.with(mContext).load(currentImage.getImageUri()).placeholder(R.drawable.circle).into(holder.imageView);
+        // AQUI TA DANDO PROBLEMA N TA LENDO A URI
+//        Glide.with(mContext).load(currentImage.getImageUri()).placeholder(R.drawable.bodybuilder_icon).into(holder.imageView);
+
+        //--------------------------------------------------------------
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+        // Gets firebase storage reference
+        FirebaseStorage mStorage = FirebaseStorage.getInstance();
+        StorageReference mRef = mStorage.getReference().child("users").child(mAuth.getUid()).child(currentImage.getImageDate());
+
+        try {
+            final File localFile = File.createTempFile(currentImage.getImageDate(), "jpg");
+            mRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                    Glide.with(mContext).load(localFile).placeholder(R.drawable.ic_person).into(holder.imageView);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+
+                }
+            });
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //----------------------------------------------------------------------------
     }
 
     @Override

@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     public Button btn_logout;
     public TextView txt_hello;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,23 +62,26 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
-        // Gets the firebase
-        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference mRef = mDatabase.getReference().child("users").child(Objects.requireNonNull(mAuth.getUid()));
+        if(current_user != null) {
+            // Gets the firebase
+            FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+            DatabaseReference mRef = mDatabase.getReference().child("users").child(Objects.requireNonNull(mAuth.getUid()));
 
-        // Shows the "hello, ..." message.
-        mRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String helloName = "Hello, " + Objects.requireNonNull(snapshot.child("name").getValue()).toString();
-                txt_hello.setText(helloName);
-            }
+            // Shows the "hello, ..." message.
+            mRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    String helloName = "Hello, " + Objects.requireNonNull(snapshot.child("name").getValue()).toString();
+                    txt_hello.setText(helloName);
+                }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+                }
+            });
+
+        }
 
         btn_logout = findViewById(R.id.btn_logout);
         btn_logout.setOnClickListener(new View.OnClickListener() {

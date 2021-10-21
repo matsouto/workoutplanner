@@ -65,6 +65,7 @@ public class MyEvolution extends AppCompatActivity {
         FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
         DatabaseReference mDatabaseRef = mDatabase.getReference().child("users").child(mAuth.getUid()).child("pics");
 
+
 //        FirebaseStorage mStorage = FirebaseStorage.getInstance();
 //        StorageReference mStorageRef = mStorage.getReference().child("users").child(mAuth.getUid()).child("pics");
         Toast.makeText(MyEvolution.this,"Loading Your Photos!",Toast.LENGTH_SHORT).show();
@@ -72,15 +73,15 @@ public class MyEvolution extends AppCompatActivity {
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // Clears the array to not have duplicates when a new entry is made
+                imageList.clear();
                 // Iterates for each item in the mRef database path
                 for (DataSnapshot item_snapshot : snapshot.getChildren()) {
                     // Gets data from firebase and associates it to the imageModel object
                     ImageModel image = item_snapshot.getValue(ImageModel.class);
                     // Add the exercise to the exercises arraylist
                     imageList.add(image);
-                    Toast.makeText(MyEvolution.this,""+image.getImageUri(),Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(MyEvolution.this,""+imageList,Toast.LENGTH_SHORT).show();
                 ImageAdapter mAdapter = new ImageAdapter(MyEvolution.this, imageList);
                 mRecyclerView.setAdapter(mAdapter);
             }

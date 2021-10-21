@@ -180,6 +180,7 @@ public class MyEvolution_Creator extends AppCompatActivity {
                             }
                         },1000);
 
+                        // O PROBLEMA TA AQUI NA HORA DE COLOCAR A URI ESSA URI TA ERRADA
                         ImageModel image = new ImageModel("" + currentTime, taskSnapshot.getUploadSessionUri().toString());
                         mDatabaseRef.child("" + currentTime).setValue(image);
                         Toast.makeText(MyEvolution_Creator.this,"Uploaded successfully to database!",Toast.LENGTH_SHORT).show();
