@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -119,6 +120,7 @@ public class Lats extends AppCompatActivity {
                         TextView text = (TextView)view.findViewById(R.id.exercise_name);
                         String exercise_to_delete = text.getText().toString();
 
+                        // Creates the Alert Dialog with the delete options
                         AlertDialog.Builder builder = new AlertDialog.Builder(Lats.this);
                         builder.setCancelable(true);
                         builder.setTitle("Delete");
@@ -142,8 +144,8 @@ public class Lats extends AppCompatActivity {
 
                         AlertDialog dialog = builder.create();
                         dialog.show();
-
-                        return false;
+                        // Return true to not trigger the short click listener
+                        return true;
                     }
                 });
 
