@@ -73,7 +73,7 @@ public class Lats extends AppCompatActivity {
         // Reads the data from the database to create the ListView
         FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
         DatabaseReference mRef = mDatabase.getReference().child("users").child(mAuth.getUid()).child("latsList");
-        Toast.makeText(Lats.this,"Loading Your Exercises!",Toast.LENGTH_SHORT).show();
+        // Toast.makeText(Lats.this,"Loading Your Exercises!",Toast.LENGTH_SHORT).show();
 
         // Sets the listener to load the database exercise list
         mRef.addValueEventListener(new ValueEventListener() {
@@ -165,5 +165,6 @@ public class Lats extends AppCompatActivity {
     public void openExerciseCreatorLats() {
         Intent intent = new Intent(this, ExerciseCreatorLats.class);
         startActivity(intent);
+        finish();
     }
 }

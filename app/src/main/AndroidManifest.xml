@@ -14,9 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WorkoutApp">
         <activity
-            android:name=".MyEvolution"
+            android:name=".exercises.ExerciseCreatorLegs"
             android:exported="true" />
-        <!-- Created when trying to make the photo high quality -->
+        <activity
+            android:name=".exercises.ExerciseCreatorChest"
+            android:exported="true" />
+        <activity
+            android:name=".MyEvolution"
+            android:exported="true" /> <!-- Created when trying to make the photo high quality -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.souto.fileprovider"
