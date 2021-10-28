@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyEvolution_Creator"
+    tools:context=".evolution.MyEvolution_Creator"
     android:background="@drawable/menu_bg"
     android:padding="20dp"
     android:orientation="vertical">

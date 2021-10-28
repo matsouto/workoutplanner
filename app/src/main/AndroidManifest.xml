@@ -20,7 +20,7 @@
             android:name=".exercises.ExerciseCreatorChest"
             android:exported="true" />
         <activity
-            android:name=".MyEvolution"
+            android:name=".evolution.MyEvolution"
             android:exported="true" /> <!-- Created when trying to make the photo high quality -->
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -51,7 +51,7 @@
             android:name=".exercises.Lats"
             android:exported="true" />
         <activity
-            android:name=".MyEvolution_Creator"
+            android:name=".evolution.MyEvolution_Creator"
             android:exported="true" />
         <activity
             android:name=".WorkoutPlanner"

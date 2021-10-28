@@ -1,4 +1,4 @@
-package com.souto.workoutapp;
+package com.souto.workoutapp.evolution;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,8 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+import com.souto.workoutapp.R;
 import com.souto.workoutapp.exercises.Lats;
 import com.souto.workoutapp.model.ImageAdapter;
 import com.souto.workoutapp.model.ImageModel;
@@ -84,6 +83,10 @@ public class MyEvolution extends AppCompatActivity {
                 }
                 ImageAdapter mAdapter = new ImageAdapter(MyEvolution.this, imageList);
                 mRecyclerView.setAdapter(mAdapter);
+
+                if (imageList.isEmpty()){
+                    Toast.makeText(MyEvolution.this,"You Don't Have Images!",Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
