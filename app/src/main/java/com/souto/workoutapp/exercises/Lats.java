@@ -3,6 +3,8 @@ package com.souto.workoutapp.exercises;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -76,6 +78,7 @@ public class Lats extends AppCompatActivity {
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                exercises.clear();
                 // Iterates for each item in the mRef database path
                 for (DataSnapshot item_snapshot : snapshot.getChildren()) {
                     // Gets data from firebase and associates it to the exercise object
@@ -109,9 +112,45 @@ public class Lats extends AppCompatActivity {
                     }
                 });
 
+                listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                        // Gets the clicked view, gets the specific exercise_name view, casts into textview
+                        TextView text = (TextView)view.findViewById(R.id.exercise_name);
+                        String exercise_to_delete = text.getText().toString();
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Lats.this);
+                        builder.setCancelable(true);
+                        builder.setTitle("Delete");
+                        builder.setMessage("Do you want to delete the exercise permanently?");
+                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                mRef.child(""+exercise_to_delete).removeValue();
+                                Toast.makeText(Lats.this, exercise_to_delete + " removed from database!", Toast.LENGTH_SHORT).show();
+                                mCustomAdapter.notifyDataSetChanged();
+
+                            }
+                        });
+                        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+
+                        return false;
+                    }
+                });
+
                 if (exercises.isEmpty()){
                     Toast.makeText(Lats.this,"You Don't Have Exercises!",Toast.LENGTH_SHORT).show();
                 }
+
             }
 
             @Override
